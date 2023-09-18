@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./../css/addtocart.css">
+        <script src="https://kit.fontawesome.com/92d70a2fd8.js" crossorigin="anonymous"></script>
+        <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <p class="logo">Screen shop</p>
+            <div class='right'>
+                <div class="cart"><i class="fa-solid fa-cart-shopping"></i><p id="count">0</p></div>
+                <div id='btn_reg' class='nav_btn'>Sign up</div>
+                <div id='btn_logout' class='nav_btn'>Logout</div>
+                <div id='btn_login' class='nav_btn'>Login</div>
+            </div>
+        </div>
+        <div class="container">
+            <div id="root"></div>
+            <div class="sidebar">
+                <div class="head"><p>My Cart</p></div>
+                <div id="cartItem">Your cart is empty</div>
+                <div class="foot">
+                    <h3>Total</h3>
+                    <h2 id="total">$ 0</h2>
+                </div>
+                <div id='btn_checkout'>checkout</div>
+            </div>
+        </div>
+        <script src="js/addtocart.js"></script>
+        <script>$(document).ready(function() {})</script>
+    </body>
+</html>

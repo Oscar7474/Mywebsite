@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./../css/login.css">
+        <script src="https://kit.fontawesome.com/92d70a2fd8.js" crossorigin="anonymous"></script>
+        <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+    </head>
+    <body>
+        <div id='login_box'>
+            <h1>Sign in</h1>
+            <div class='acc_row inp_row'>
+                <div class='icon'><i class="fa-solid fa-user"></i></div>
+                <input name='inp_acc' id='inp_acc' class='inp' placeholder='Please input account'>                
+            </div>
+            <div class='pwd_row inp_row'>
+                <div class='icon'><i class="fa-solid fa-lock"></i></div>
+                <input name='inp_pwd' id='inp_pwd' class='inp' placeholder='Please input password' type='password'>                              
+            </div>
+            <div class='btn_group'>
+                <div id='btn_reg' class='btn'>Sign up</div>
+                <div id='btn_confirm' class='btn'>Enter</div>
+                <div id='btn_cancel' class='btn'>Cancel</div>
+            </div>
+        </div>
+        <script src="js/login.js"></script>
+        <script>$(document).ready(function() {})</script>
+    </body>
+</html>

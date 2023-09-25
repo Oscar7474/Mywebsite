@@ -1,0 +1,211 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- 主機： 127.0.0.1
+-- 產生時間： 2022-12-26 18:19:26
+-- 伺服器版本： 10.4.25-MariaDB
+-- PHP 版本： 8.1.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- 資料庫： `cart`
+--
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `checkout`
+--
+
+CREATE TABLE `checkout` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL COMMENT 'USER ID',
+  `amount` int(11) NOT NULL COMMENT '總價',
+  `date_time_create` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='結帳';
+
+--
+-- 傾印資料表的資料 `checkout`
+--
+
+INSERT INTO `checkout` (`id`, `user_id`, `amount`, `date_time_create`) VALUES
+(1, 1, 2332, '2022-12-26 15:58:32'),
+(2, 1, 1166, '2022-12-26 16:00:38'),
+(3, 1, 1166, '2022-12-26 16:02:57'),
+(4, 1, 1166, '2022-12-26 16:03:14'),
+(5, 1, 2722, '2022-12-26 16:03:56'),
+(6, 1, 2722, '2022-12-26 16:04:11'),
+(7, 1, 2722, '2022-12-26 16:04:29'),
+(8, 1, 651, '2022-12-26 16:05:27'),
+(9, 1, 1166, '2022-12-26 16:05:30'),
+(10, 1, 256, '2022-12-26 16:05:32'),
+(11, 1, 2461, '2022-12-26 16:05:36'),
+(12, 12, 1953, '2022-12-26 16:11:34'),
+(13, 12, 651, '2022-12-26 16:11:36'),
+(14, 12, 1230, '2022-12-26 16:11:39'),
+(15, 12, 651, '2022-12-26 16:12:24');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `checkout_detail`
+--
+
+CREATE TABLE `checkout_detail` (
+  `id` int(11) NOT NULL,
+  `checkout_id` int(11) NOT NULL COMMENT '結帳ID',
+  `product_id` int(11) NOT NULL COMMENT '商品ID',
+  `number` int(11) NOT NULL COMMENT '商品數量',
+  `date_time_create` timestamp NOT NULL DEFAULT current_timestamp() COMMENT '建立時間'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 傾印資料表的資料 `checkout_detail`
+--
+
+INSERT INTO `checkout_detail` (`id`, `checkout_id`, `product_id`, `number`, `date_time_create`) VALUES
+(13, 8, 2, 1, '2022-12-26 16:05:27'),
+(14, 9, 1, 1, '2022-12-26 16:05:30'),
+(15, 9, 2, 1, '2022-12-26 16:05:30'),
+(16, 10, 4, 4, '2022-12-26 16:05:32'),
+(17, 11, 3, 2, '2022-12-26 16:05:36'),
+(18, 11, 2, 3, '2022-12-26 16:05:36'),
+(19, 12, 2, 3, '2022-12-26 16:11:34'),
+(20, 13, 2, 1, '2022-12-26 16:11:36'),
+(21, 14, 1, 1, '2022-12-26 16:11:39'),
+(22, 14, 2, 1, '2022-12-26 16:11:39'),
+(23, 14, 4, 1, '2022-12-26 16:11:39'),
+(24, 15, 2, 1, '2022-12-26 16:12:24');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `product`
+--
+
+CREATE TABLE `product` (
+  `id` int(11) NOT NULL,
+  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL COMMENT '商品名稱',
+  `price` int(10) UNSIGNED NOT NULL COMMENT '商品價格',
+  `url` varchar(45) COLLATE utf8_unicode_ci NOT NULL COMMENT '商品路徑'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='商品';
+
+--
+-- 傾印資料表的資料 `product`
+--
+
+INSERT INTO `product` (`id`, `name`, `price`, `url`) VALUES
+(1, 'ACER ED270R', 515, 'image/gg-1.jpg'),
+(2, 'ASUS TUF GAMING VG289Q', 651, 'image/hh-2.jpg'),
+(3, 'ACER K242HYL', 254, 'image/ee-3.png'),
+(4, 'AOC C27G2Z', 64, 'image/aa-1.jpg'),
+(5, 'PHILIPS 275M8RZ', 474, 'image/kk-4.jpg'),
+(6, 'SANSUNG S32BG850NC', 410, 'image/tt-5.jpg'),
+(7, 'AOC 27B2HM', 524, 'image/ww-7.jpg'),
+(8, 'LG 27MP400', 380, 'image/yy-8.jpg'),
+(9, 'MSI G243', 854, 'image/oo-9.jpg'),
+(10, 'BenQ EW2780Q', 808, 'image/ii-10.jpg'),
+(11, 'ASUS VZ249HEG1R', 356, 'image/uu-11.jpg'),
+(12, 'Terra 2463WPV', 587, 'image/zz-12.jpg'),
+(13, 'BenQ XL2566K', 428, 'image/rr-13.jpg'),
+(14, 'SAMSUNG G7MiniLED', 790, 'image/LL-14.jpg'),
+(15, 'BenQ GW2485TC', 580, 'image/mm-15.jpg'),
+(16, 'MSI MD241PW', 640, 'image/dd-16.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `account` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '帳號',
+  `password` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '密碼',
+  `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'E-mail',
+  `date_time_create` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 傾印資料表的資料 `user`
+--
+
+INSERT INTO `user` (`id`, `account`, `password`, `email`, `date_time_create`) VALUES
+(12, 'ggg', 'ggg', 'ggg@gmail.com', '2022-12-26 16:11:24'),
+(13, 'test', 'test', 'osadfja@gmail.com', '2022-12-26 16:25:25'),
+(8, 'wer', 'wer', 'wer@gmail.com', '2022-12-26 16:08:32');
+
+--
+-- 已傾印資料表的索引
+--
+
+--
+-- 資料表索引 `checkout`
+--
+ALTER TABLE `checkout`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `amount` (`amount`);
+
+--
+-- 資料表索引 `checkout_detail`
+--
+ALTER TABLE `checkout_detail`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`);
+
+--
+-- 資料表索引 `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`account`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
+--
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `checkout`
+--
+ALTER TABLE `checkout`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `checkout_detail`
+--
+ALTER TABLE `checkout_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `product`
+--
+ALTER TABLE `product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
